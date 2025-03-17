@@ -1,109 +1,80 @@
-Phân Tích Phân Khúc Khách Hàng và Dự Đoán Điểm Chi Tiêu
+# 🚀 Phân tích phân khúc khách hàng và dự đoán điểm chi tiêu
 
-Giới Thiệu
+## 📌 Giới thiệu
 
-Đây là dự án bài tập lớn cho học phần Dữ Liệu Lớn tại trường Đại học Đại Nam, Khoa Công Nghệ Thông Tin. Dự án tập trung vào việc phân tích phân khúc khách hàng và dự đoán điểm chi tiêu dựa trên tập dữ liệu từ Kaggle.
+Đây là dự án được thực hiện trong khuôn khổ môn học **Dữ liệu lớn** tại **Trường Đại học Đại Nam**, với đề tài **Phân tích phân khúc khách hàng và dự đoán điểm chi tiêu**. Dự án sử dụng dữ liệu từ Kaggle và áp dụng các công cụ như R, Spark, và các mô hình học máy để phân tích hành vi tiêu dùng của khách hàng.
 
-Thành Viên Nhóm
+## 👤 Thành viên nhóm
 
-Nguyễn Đức Duy - 1671020060
+- 🧑‍💻 Nguyễn Đức Duy
+- 🧑‍💻 Nguyễn Minh Đức
+- 🧑‍💻 Nguyễn Tất Toàn
+- 🧑‍💻 Nguyễn Tiến Dũng
 
-Nguyễn Minh Đức - 1671020089
+## 🛠️ Công nghệ sử dụng
 
-Nguyễn Tất Toàn - 1671020330
+- **Ngôn ngữ lập trình**: R
+- **Công cụ xử lý dữ liệu lớn**: Apache Spark
+- **Thư viện chính**: tidyverse, sparklyr, caret, ggplot2
+- **Mô hình phân tích**: RFM (Recency, Frequency, Monetary), Hồi quy tuyến tính
 
-Nguyễn Tiến Dũng - 1671020068
+## 🎯 Mục tiêu dự án
 
-Giảng Viên Hướng Dẫn
+1. Phân tích và phân khúc khách hàng dựa trên mô hình RFM.
+2. Dự đoán điểm chi tiêu của khách hàng dựa trên dữ liệu lịch sử.
+3. Tối ưu hóa chiến lược tiếp thị và cải thiện trải nghiệm khách hàng.
 
-TS. Trần Quý Nam
+## 📂 Dữ liệu
 
-ThS. Lê Thị Thùy Trang
+- Nguồn dữ liệu: Kaggle
+- Số lượng quan sát: 143,505 giao dịch
+- Biến số: InvoiceNo, StockCode, Description, Quantity, InvoiceDate, UnitPrice, CustomerID, Country, TotalPrice
 
-Mục Tiêu Dự Án
+## 🛤️ Quy trình thực hiện
 
-Phân tích hành vi tiêu dùng của khách hàng.
+### 1️⃣ Tiền xử lý dữ liệu
+- 🧹 Làm sạch dữ liệu, loại bỏ các giá trị bị thiếu
+- 🔄 Chuyển đổi dữ liệu và tạo các biến mới như TotalPrice
+- ⚡ Kết nối và xử lý dữ liệu trên Apache Spark thông qua sparklyr
 
-Áp dụng mô hình RFM (Recency, Frequency, Monetary) để phân khúc khách hàng.
+### 2️⃣ Phân tích phân khúc khách hàng
+- 🧐 Áp dụng mô hình RFM để phân loại khách hàng
+- 📊 Trực quan hóa dữ liệu bằng ggplot2
 
-Xây dựng mô hình hồi quy để dự đoán điểm chi tiêu.
+### 3️⃣ Dự đoán điểm chi tiêu
+- 🔍 Xây dựng mô hình hồi quy tuyến tính
+- 📈 Đánh giá hiệu suất mô hình bằng RMSE, MAE và R
 
-Sử dụng Apache Spark và ngôn ngữ R để xử lý dữ liệu lớn.
+## ✅ Kết quả đạt được
 
-Dữ Liệu
+- 🎯 Phân khúc khách hàng thành các nhóm: VIP, Trung thành, Tiềm năng, Vãng lai
+- 🔥 Dự đoán xu hướng chi tiêu với độ chính xác tương đối
+- 📈 Ứng dụng thực tiễn trong việc tối ưu hóa chiến lược kinh doanh và tiếp thị
 
-Nguồn dữ liệu: Kaggle
+## 🛠️ Cách chạy chương trình
 
-Tập dữ liệu: Online Retail
+1. Cài đặt các thư viện cần thiết trong R:
 
-Số lượng mẫu: 143,505
+```R
+install.packages(c("tidyverse", "sparklyr", "caret", "ggplot2"))
+```
 
-Số biến: 9 (InvoiceNo, StockCode, Description, Quantity, InvoiceDate, UnitPrice, CustomerID, Country, TotalPrice)
+2. Kết nối với Apache Spark:
 
-Công Nghệ Sử Dụng
+```R
+library(sparklyr)
+sc <- spark_connect(master = "local")
+```
 
-R và RStudio
+3. Chạy các bước xử lý và phân tích dữ liệu từ file `analysis.R`
 
-Apache Spark (Sparklyr)
+## 📚 Tài liệu tham khảo
 
-Dplyr, ggplot2, caret, Metrics
+- Kaggle: https://www.kaggle.com
+- Apache Spark: https://spark.apache.org/
+- Tidyverse: https://www.tidyverse.org/
 
-Hadoop
-
-Các Bước Thực Hiện
-
-1. Tiền Xử Lý Dữ Liệu
-
-Xóa các giá trị thiếu và không hợp lệ.
-
-Tính tổng doanh thu, tần suất và thời gian mua hàng.
-
-2. Phân Tích Phân Khúc Khách Hàng
-
-Áp dụng mô hình RFM.
-
-Nhóm khách hàng theo các phân khúc: VIP, Trung thành, Khách vãng lai, v.v.
-
-Trực quan hóa dữ liệu bằng biểu đồ cột và bản đồ doanh thu.
-
-3. Dự Đoán Điểm Chi Tiêu
-
-Sử dụng mô hình hồi quy tuyến tính.
-
-Đánh giá mô hình bằng các chỉ số: RMSE, MAE, R².
-
-4. Lưu Trữ và Xuất Dữ Liệu
-
-Xuất dữ liệu phân khúc ra file CSV.
-
-Ngắt kết nối Spark để tối ưu tài nguyên.
-
-Kết Quả
-
-Phân tích phân khúc khách hàng chính xác.
-
-Mô hình dự đoán đạt RMSE = 1.094, MAE = 0.934, R² = 0.414.
-
-Ứng Dụng Thực Tiễn
-
-Tối ưu chiến lược tiếp thị.
-
-Dự đoán nhu cầu và hành vi mua sắm.
-
-Nâng cao trải nghiệm khách hàng.
-
-Hướng Dẫn Cài Đặt
-
-Cài đặt R và RStudio.
-
-Cài đặt Apache Spark và thư viện sparklyr.
-
-Chạy các file script R trong thư mục src.
-
-Thông Tin Liên Hệ
+## 📧 Liên hệ
 
 Email: duc1608204@gmail.com
-
-Trường Đại học Đại Nam, Khoa Công Nghệ Thông Tin
-
 
